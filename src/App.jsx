@@ -6,7 +6,7 @@ import Contact from './sections/Contact.jsx';
 import Certificate from './sections/Certificate.jsx';
 import Projects from './sections/Projects.jsx';
 import WorkExperience from './sections/Experience.jsx';
-import Parallax from './sections/parallax.jsx';
+import Parallax from './sections/Parallax.jsx';
 import { useEffect } from 'react';
 
 const App = () => {
