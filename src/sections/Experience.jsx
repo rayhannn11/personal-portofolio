@@ -59,14 +59,14 @@ const WorkExperience = () => {
       initial="initial"
       animate={isInView ? 'animate' : 'initial'}
       ref={sectionRef}
-      className={`c-space my-20  ${theme === 'light' && 'bg-[#F2F2F2]'} `}
+      className={`c-space my-10  ${theme === 'light' && 'bg-[#F2F2F2]'} `}
       id="work">
-      <motion.div className="w-full max-w-7xl mx-auto py-20">
+      <motion.div className="w-full max-w-7xl mx-auto ">
         <motion.p variants={textVariants(0.3)} className="head-text">
           My Project Experience
         </motion.p>
 
-        <motion.div variants={textVariants(1)} className="work-container">
+        <motion.div variants={textVariants(0.6)} className="work-container">
           <div className="work-canvas">
             <Canvas>
               <ambientLight intensity={7} />

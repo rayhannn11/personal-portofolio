@@ -51,11 +51,11 @@ const Certificate = () => {
       animate={isInView ? 'animate' : 'initial'}
       ref={sectionRef}
       className="c-space my-20 max-w-7xl mx-auto ">
-      <motion.h3 variants={textVariants(0.3)} className="head-text">
+      <motion.h3 variants={textVariants(0.1)} className="head-text">
         Explore My Certificates
       </motion.h3>
 
-      <motion.div variants={textVariants(1)} className="client-container ">
+      <motion.div variants={textVariants(0.3)} className="client-container ">
         {certificate.map((item) => (
           <div key={`review-${item.id}`} className="client-review">
             <div>

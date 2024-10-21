@@ -26,11 +26,11 @@ body {
   }
 
   .nav-li {
-    @apply hover:text-[#8576EC] font-generalsans max-sm:hover:bg-black-500 max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
+    @apply hover:text-[#8576EC] font-generalsans max-sm:hover:bg-black-500;
   }
 
   .nav-li_a {
-    @apply text-lg md:text-base hover:text-[#8576EC]  transition-colors;
+    @apply text-lg md:text-base hover:text-[#8576EC]  transition-colors max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
   }
 
   .nav-sidebar {

@@ -93,11 +93,11 @@ const Contact = () => {
 
   const textVariants = (delay = 0) => ({
     initial: {
-      scale: 0.3,
-      opacity: 0.3,
+      scale: 0,
+      opacity: 0,
     },
     animate: {
-      scale: [0.3, 0.5, 1],
+      scale: 1,
       opacity: 1,
       transition: {
         duration: 2, // Atur durasi keseluruhan agar smooth
@@ -111,21 +111,21 @@ const Contact = () => {
   const smMobile = useMediaQuery({ maxWidth: 440 });
 
   return (
-    <section ref={sectionRef} className="c-space my-20 max-w-7xl mx-auto" id="contact">
+    <section ref={sectionRef} className="c-space mb-20 max-w-7xl mx-auto" id="contact">
       {alert.show && <Alert {...alert} />}
 
-      <motion.div
-        variants={textVariants(0.3)} // Menambahkan sedikit delay
-        initial="initial"
-        animate={isInView ? 'animate' : 'initial'}
-        className="relative min-h-screen flex items-center justify-center flex-col">
+      <div className="relative min-h-screen flex items-center justify-center flex-col">
         <img
           src="/assets/terminal.png"
           alt="terminal-bg"
           className={` w-auto  absolute inset-0  min-h-screen object-fit  ${smMobile && 'h-[110vh]'} ${xsMobile && 'h-[160vh]'}`}
         />
 
-        <div className="contact-container text-white-600">
+        <motion.div
+          variants={textVariants(0.1)} // Menambahkan sedikit delay
+          initial="initial"
+          animate={isInView ? 'animate' : 'initial'}
+          className="contact-container text-white-600">
           <h3 className="head-text ">Let's talk</h3>
           <p className="text-lg mt-3">
             If you need a full stack developer to create or improve your website I’m here to help.
@@ -177,8 +177,8 @@ const Contact = () => {
               <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
             </button>
           </form>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </section>
   );
 };

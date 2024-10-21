@@ -6,13 +6,11 @@ import { FaSun, FaMoon, FaLaptopCode, FaTimes, FaBars } from 'react-icons/fa';
 import useTailwindConfig from '../hooks/useTailwindConfig.js';
 
 const NavItems = ({ onClick = () => {} }) => (
-  <ul className="nav-ul">
+  <ul className="nav-ul ">
     {navLinks.map((item) => (
-      <li key={item.id} className="nav-li">
-        <a href={item.href} className="nav-li_a" onClick={onClick}>
-          {item.name}
-        </a>
-      </li>
+      <a key={item.id} href={item.href} className="nav-li_a" onClick={onClick}>
+        <li className="nav-li ">{item.name}</li>
+      </a>
     ))}
   </ul>
 );

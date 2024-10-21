@@ -51,16 +51,16 @@ const About = () => {
 
   const textVariants = (delay = 0) => ({
     initial: {
-      scale: 0.3,
-      opacity: 0.3,
+      x: -500,
+      opacity: 0,
     },
     animate: {
-      scale: [0.3, 0.5, 1],
+      x: 0,
       opacity: 1,
       transition: {
-        duration: 2, // Atur durasi keseluruhan agar smooth
-        delay: delay, // Menyesuaikan delay
-        ease: 'easeInOut', // Membuat animasi lebih halus
+        duration: 1,
+        staggerChildren: 0.1,
+        delay: delay,
       },
     },
   });
@@ -68,10 +68,10 @@ const About = () => {
   return (
     <section ref={sectionRef} className={`c-space my-20"  ${theme === 'light' && 'bg-[#F2F2F2]'} w-full `} id="about">
       <motion.div
-        variants={textVariants(0.3)} // Menambahkan sedikit delay
+        variants={textVariants(0.1)} // Menambahkan sedikit delay
         initial="initial"
         animate={isInView ? 'animate' : 'initial'}
-        className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full max-w-7xl mx-auto p-[3rem]">
+        className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full max-w-7xl mx-auto mt-10 sm:p-[3rem]">
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container ">
             <img
