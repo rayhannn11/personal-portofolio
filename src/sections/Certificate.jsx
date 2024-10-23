@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 
 import { certificate } from '../constants/index.js';
 import { useEffect, useRef, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const Certificate = () => {
   const sectionRef = useRef(null); // Reference to the section element
@@ -28,27 +29,32 @@ const Certificate = () => {
       }
     };
   }, [isInView]);
+  const smMobile = useMediaQuery({ maxWidth: 360 });
 
-  const textVariants = (delay = 0) => ({
-    initial: {
-      x: -500,
-      opacity: 0,
-    },
-    animate: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        staggerChildren: 0.1,
-        delay: delay,
-      },
-    },
-  });
+  const textVariants = (delay = 0) =>
+    smMobile
+      ? {}
+      : {
+          initial: {
+            x: -500,
+            opacity: 0,
+          },
+          animate: {
+            x: 0,
+            opacity: 1,
+            transition: {
+              duration: 1,
+              staggerChildren: 0.1,
+              delay: delay,
+            },
+          },
+        };
+
   return (
     <motion.section
       variants={textVariants}
       initial="initial"
-      animate={isInView ? 'animate' : 'initial'}
+      animate={isInView && !smMobile ? 'animate' : 'initial'}
       ref={sectionRef}
       className="c-space my-20 max-w-7xl mx-auto ">
       <motion.h3 variants={textVariants(0.1)} className="head-text">

@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import Button from '../components/Button.jsx';
 import useThemeStore from '../hooks/themeStore.js';
+import { useMediaQuery } from 'react-responsive';
 
 const About = () => {
   const [hasCopied, setHasCopied] = useState(false);
@@ -49,28 +50,37 @@ const About = () => {
     }, 2000);
   };
 
-  const textVariants = (delay = 0) => ({
-    initial: {
-      x: -500,
-      opacity: 0,
-    },
-    animate: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        staggerChildren: 0.1,
-        delay: delay,
-      },
-    },
-  });
+  const smMobile = useMediaQuery({ maxWidth: 360 });
+
+  const textVariants = (delay = 0) =>
+    smMobile
+      ? {}
+      : {
+          initial: {
+            x: -500,
+            opacity: 0,
+          },
+          animate: {
+            x: 0,
+            opacity: 1,
+            transition: {
+              duration: 1,
+              staggerChildren: 0.1,
+              delay: delay,
+            },
+          },
+        };
 
   return (
-    <section ref={sectionRef} className={`c-space my-20"  ${theme === 'light' && 'bg-[#F2F2F2]'} w-full `} id="about">
+    <motion.section
+      ref={sectionRef}
+      variants={textVariants}
+      initial="initial"
+      animate={isInView && !smMobile ? 'animate' : 'initial'}
+      className={`c-space my-20"  ${theme === 'light' && 'bg-[#F2F2F2]'}  mx-auto w-full `}
+      id="about">
       <motion.div
-        variants={textVariants(0.1)} // Menambahkan sedikit delay
-        initial="initial"
-        animate={isInView ? 'animate' : 'initial'}
+        variants={textVariants(0.1)}
         className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full max-w-7xl mx-auto mt-10 sm:p-[3rem]">
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container ">
@@ -167,7 +177,7 @@ const About = () => {
           </div>
         </div>
       </motion.div>
-    </section>
+    </motion.section>
   );
 };
 

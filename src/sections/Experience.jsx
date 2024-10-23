@@ -7,6 +7,7 @@ import Developer from '../components/Developer.jsx';
 import CanvasLoader from '../components/Loading.jsx';
 import { workExperiences } from '../constants/index.js';
 import useThemeStore from '../hooks/themeStore.js';
+import { useMediaQuery } from 'react-responsive';
 
 const WorkExperience = () => {
   const [animationName, setAnimationName] = useState('idle');
@@ -36,28 +37,33 @@ const WorkExperience = () => {
     };
   }, [isInView]);
 
-  const textVariants = (delay = 0) => ({
-    initial: {
-      y: 500,
-      opacity: 0,
-    },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 1,
-        staggerChildren: 0.1,
-        delay: delay,
-      },
-    },
-  });
+  const smMobile = useMediaQuery({ maxWidth: 360 });
+
+  const textVariants = (delay = 0) =>
+    smMobile
+      ? {}
+      : {
+          initial: {
+            y: 500,
+            opacity: 0,
+          },
+          animate: {
+            y: 0,
+            opacity: 1,
+            transition: {
+              duration: 1,
+              staggerChildren: 0.1,
+              delay: delay,
+            },
+          },
+        };
 
   const { theme } = useThemeStore();
   return (
     <motion.section
       variants={textVariants} // Menambahkan sedikit delay
       initial="initial"
-      animate={isInView ? 'animate' : 'initial'}
+      animate={isInView && !smMobile ? 'animate' : 'initial'}
       ref={sectionRef}
       className={`c-space my-10  ${theme === 'light' && 'bg-[#F2F2F2]'} `}
       id="work">
